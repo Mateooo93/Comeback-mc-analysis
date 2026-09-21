@@ -5,3 +5,5 @@ scale: controls how many blocks you want rendered,
 seed: controls the map seed 
 and 
 version: controls the version the map was made in
+Villages: you also have the possibility to see villages in the map
+
