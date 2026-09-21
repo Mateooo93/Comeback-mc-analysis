@@ -7,3 +7,5 @@ and
 version: controls the version the map was made in
 Villages: you also have the possibility to see villages in the map
 
+this was made using matplotlib, flask and cubiomespi,
+cubiomespi is neccesary to generate the world using the seed and minecraft version
