@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft world analysis</title>
+    <form action="/mapgen" method="POST">
+        seed:
+        <input name ="seed"> seed
+        version:
+        <input name ="version"> 
+        dimension:
+        <select name="dimension">
+            <option value="overworld">overworld</option>
+            <option value="nether">Nether</option>
+            <option value="end">End</option>
+        </select>
+        scale(blocks):       
+        <input name ="scale"> 
+
+        <button type="submit">Generate map</button>
+    </form>
+    <img src="{{ url_for('static', filename='map.png') }}?v={{ random}}"
+    style="width: 83%; height: auto; display: block; margin: 25px auto 0; "
+    >
+
+</head>
+<body>
+    
+</body>
+</html>
