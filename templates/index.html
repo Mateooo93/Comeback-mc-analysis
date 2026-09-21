@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft world analysis</title>
+    <h1>Minecraft world analysis</h1>
     <form action="/mapgen" method="POST">
         seed:
-        <input name ="seed"> seed
+        <input name ="seed"> 
         version:
         <input name ="version"> 
         dimension:
@@ -17,11 +18,18 @@
         </select>
         scale(blocks):       
         <input name ="scale"> 
-
+        <p>X(optional):
+        <input name ="X"> 
+        Z(optional):
+        <input name ="Z"> 
+        </p>       
+        <input type="checkbox" name="villages" value="villages">
+        <label for="villages">show villages</label><br>  
         <button type="submit">Generate map</button>
+ 
     </form>
     <img src="{{ url_for('static', filename='map.png') }}?v={{ random}}"
-    style="width: 83%; height: auto; display: block; margin: 25px auto 0; "
+    style="width: 88%; height: auto; display: block; margin: 15px auto 0; margin-left: 0; margin-right: auto;"
     >
 
 </head>
