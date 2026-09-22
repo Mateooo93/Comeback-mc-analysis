@@ -23,14 +23,80 @@
         Z(optional):
         <input name ="Z"> 
         </p>       
+        <label for="villages">show villages</label>
         <input type="checkbox" name="villages" value="villages">
-        <label for="villages">show villages</label><br>  
+        <label for="outposts">    show outposts</label>
+        <input type="checkbox" name="outposts" value="outposts">
+        <label for="strongholds">    show strongholds</label>
+        <input type="checkbox" name="strongholds" value="strongholds">
+        <br> 
+        <br>  
         <button type="submit">Generate map</button>
  
     </form>
-    <img src="{{ url_for('static', filename='map.png') }}?v={{ random}}"
-    style="width: 88%; height: auto; display: block; margin: 15px auto 0; margin-left: 0; margin-right: auto;"
-    >
+    <div id="coordinates">Move your mouse over the map</div>
+    <img id = "map" src="{{ url_for('static', filename='map.png') }}?v={{ random}}" class="map"
+    style="width: 88%; height: auto; display: block; margin: 15px auto 0; margin-left: 0; margin-right: auto;">
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    
+    <script>
+    let currentBiome = "";    
+    let lastX = null;
+    let lastZ = null;
+    const socket = io();
+    const coordinates = document.getElementById("coordinates");
+    const map = document.getElementById("map");
+    socket.on("biome", function(data) {
+        currentBiome = data.biome;
+    }); 
+    map.addEventListener("mousemove", function(event) {
+        const rect = map.getBoundingClientRect();
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+        const pngX = mouseX * map.naturalWidth / rect.width;
+        const pngY = mouseY * map.naturalHeight / rect.height;
+
+        const mapLeftj = {{ mapLeft }};
+        const mapTopj = {{ mapTop }};
+        const mapRightj = {{ mapRight }};
+        const mapBottomj= {{ mapBottom}};
+        
+        if (
+            pngX >= mapLeftj &&
+            pngX <= mapRightj &&
+            pngY >= mapTopj &&
+            pngY <= mapBottomj
+
+        ) {
+            const mapWidth = mapRightj - mapLeftj;
+            const mapHeight = mapBottomj - mapTopj;
+            const relativeX = (pngX -mapLeftj) / mapWidth;
+            const relativeZ = (pngY-mapTopj) / mapHeight;
+            const startx = {{ startX }};
+            const startz = {{ startZ }};
+            const widthj = {{ width }};
+            const heightj = {{ height }};
+            const mcX = startx +relativeX * widthj;
+            const mcZ = startz +(1-relativeZ) * heightj;
+            const roundedX = Math.round(mcX);
+            const roundedZ = Math.round(mcZ);
+            if (roundedX !== lastX || roundedZ !== lastZ) {
+                lastX = roundedX;
+                lastZ = roundedZ;
+
+            
+                socket.emit("coordinates", {
+                    x: Math.round(mcX),
+                    z: Math.round(mcZ)
+                }); 
+            }
+            coordinates.textContent = "X: " + Math.round(mcX) + " Z: " + Math.round(mcZ) + " Biome: " + currentBiome;
+            
+        } else {
+            coordinates.textContent = "X:     Z:     Biome:";
+        }
+    });
+    </script>
 
 </head>
 <body>
