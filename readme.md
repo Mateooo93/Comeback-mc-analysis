@@ -11,5 +11,14 @@ Strongholds: you also have the possibility to see Strongholds in the map
 
 this was made using matplotlib, flask and cubiomespi,
 cubiomespi is neccesary to generate the world using the seed and minecraft version
+flask is used to send the data from the python backend to the interface
+this allows the users to have an nice html interface without relying on a terminal
 
-you can now see what coordinate your mosue is pointing at (in minecraft) aswell as its corresponding biome
+you can also see what coordinate your mouse is pointing at (in minecraft) aswell as its corresponding biome
+
+the css was highly inspired by the one hackclub uses which is open source: (https://css.hackclub.com/), 
+except for the font which is exclusively reserved for hackclub hq sites.
+
+
+
+
