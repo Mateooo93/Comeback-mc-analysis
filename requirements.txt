@@ -18,4 +18,5 @@ kiwisolver==1.5.1
 librt==0.15.0
 MarkupSafe==3.0.3
 matplotlib==3.11.2
+gunicorn
 # Editable install with no version control (mcseedfinder==0.1.0)
