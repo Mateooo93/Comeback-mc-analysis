@@ -1,0 +1,152 @@
+input {
+    background: white;
+    color: #1f2d3d;
+    font-family: inherit;
+    border-radius: 4px;
+    border: 0;
+    font-size: inherit;
+    padding: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+  }
+label {
+  font-family: inherit;
+  font-size: inherit;
+  color: #1f2d3d;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.375;
+  font-size: 20px;
+}
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.form {
+    background: #e0e6ed;
+    color: #1f2d3d;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.125);
+    padding: 32px;
+    width: fit-content;
+    margin-top: 16px;
+  }
+.checkboxes {
+    display:flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 16px;
+}
+.form-row {
+  display:grid;
+  grid-template-columns: 200px 200px;
+  gap: 16px 30px;
+  width: fit-content;
+
+
+}
+
+.field {
+
+  font-family:"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.375;
+
+}
+
+
+.checkboxes label {
+  flex-direction: row;
+  display:flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.375;
+}
+.checkboxes input[type="checkbox"] {
+  appearance: checkbox !important;
+  margin: 0;
+  -webkit-appearance: checkbox !important;
+  -moz-appearance: checkbox !important;
+  width: auto;
+  height: auto;
+  padding:0;
+  margin: 0;
+}
+.field input,
+.field select {
+    width: 120px;
+    background: white;
+    color: #1f2d3d;
+    border-radius: 4px;
+    padding: 8px;
+    border: 0;
+}
+.title {
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.009em;
+    color: #ec3750;
+    font-size: 48px;
+  }
+
+.form button {
+    margin-top: 16px;
+  }
+
+.form button:hover {
+    transform: translateY(-2px);
+}
+
+.form button:active {
+    transform: translateY(1px);
+}
+  :root {
+    --black: #1f2d3d;
+    --text: var(--black);
+    --font-2: 16px;
+    --line-height-body: 1.5;
+    --font-weight-body: 400;
+    --font-weight-bold: 700;
+    --letter-spacing-headline: 0.009em;
+    --radii-circle: 99999px;
+    --shadow-card: 0 4px 8px rgba(0, 0, 0, 0.125);
+  }
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--radii-circle);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card);
+    letter-spacing: var(--letter-spacing-headline);
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.125s ease-in-out, box-shadow 0.125s ease-in-out;
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+    line-height: inherit;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: var(--theme-ui-colors-white, #ffffff);
+    background-color: var(--theme-ui-colors-primary, #ec3750);
+    border: 0;
+    font-size: var(--font-2);
+  }

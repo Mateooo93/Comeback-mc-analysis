@@ -1,40 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://css.hackclub.com/fonts.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft world analysis</title>
-    <h1>Minecraft world analysis</h1>
-    <form action="/mapgen" method="POST">
-        seed:
-        <input name ="seed"> 
-        version:
-        <input name ="version"> 
-        dimension:
-        <select name="dimension">
-            <option value="overworld">overworld</option>
-            <option value="nether">Nether</option>
-            <option value="end">End</option>
-        </select>
-        scale(blocks):       
-        <input name ="scale"> 
-        <p>X(optional):
-        <input name ="X"> 
-        Z(optional):
-        <input name ="Z"> 
-        </p>       
-        <label for="villages">show villages</label>
-        <input type="checkbox" name="villages" value="villages">
-        <label for="outposts">    show outposts</label>
-        <input type="checkbox" name="outposts" value="outposts">
-        <label for="strongholds">    show strongholds</label>
-        <input type="checkbox" name="strongholds" value="strongholds">
-        <br> 
-        <br>  
-        <button type="submit">Generate map</button>
- 
+</head>
+<body>
+    <h1 class="title">Minecraft world analysis</h1>
+    <div class="form">
+        <form action="/mapgen" method="POST">
+            <div class="form-row">
+                <label class="field" >
+                    Seed:
+                    <input name ="seed" placeholder="1234"> 
+                </label>
+                <label class="field" >
+                    Version:
+                    <input name ="version" placeholder="1.20"> 
+                </label>
+                <label class="field">
+                        Dimension:
+                        <select name="dimension">
+                            <option value="overworld">overworld</option>
+                            <option value="nether">Nether</option>
+                            <option value="end">End</option>
+                    </select>
+                </label>
+                <label class="field" >
+                    Scale(blocks):       
+                    <input name ="scale" placeholder="5000"> 
+                </label>
+                <label class="field" >
+                    X(optional):
+                    <input name ="X" placeholder="0"> 
+                </label>
+                <label class="field" >
+                    Z(optional):
+                    <input name ="Z" placeholder=" 0"> 
+                </label>
+                </div>
+                <div class = "checkboxes">
+                <label>
+                    show villages
+                    <input type="checkbox" name="villages" value="villages">
+                </label>
+                <label>
+                       show outposts
+                    <input type="checkbox" name="outposts" value="outposts">
+                </label>
+                <label>
+                       show strongholds
+                    <input type="checkbox" name="strongholds" value="strongholds">
+                </label>
+                <br> 
+            </div>
+                <button type="submit">Generate map</button>
+
+    </div>
     </form>
-    <div id="coordinates">Move your mouse over the map</div>
+    </body>
+    <div id="coordinates"><label style="font-size:22px; color: black;" = 22px>Move your mouse over the map</label></div>
     <img id = "map" src="{{ url_for('static', filename='map.png') }}?v={{ random}}" class="map"
     style="width: 88%; height: auto; display: block; margin: 15px auto 0; margin-left: 0; margin-right: auto;">
     <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
@@ -45,6 +72,8 @@
     let lastZ = null;
     const socket = io();
     const coordinates = document.getElementById("coordinates");
+    coordinates.style.color = "black";
+    coordinates.style.fontSize = "22px";
     const map = document.getElementById("map");
     socket.on("biome", function(data) {
         currentBiome = data.biome;
@@ -90,7 +119,7 @@
                     z: Math.round(mcZ)
                 }); 
             }
-            coordinates.textContent = "X: " + Math.round(mcX) + " Z: " + Math.round(mcZ) + " Biome: " + currentBiome;
+            coordinates.textContent = "  X: " + Math.round(mcX) + "  Z: " + Math.round(mcZ) + "  Biome: " + currentBiome;
             
         } else {
             coordinates.textContent = "X:     Z:     Biome:";
@@ -98,8 +127,5 @@
     });
     </script>
 
-</head>
-<body>
-    
-</body>
+
 </html>
